@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #0f0f0f;
+  color: white;
+}
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: #1b1b1b;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 0.5rem 0 0.25rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.pagination {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+button {
+  margin: 0 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #2c2c2c;
+  color: white;
+  cursor: pointer;
+}
+
+button.active {
+  background: #00c853;
+  color: black;
+}
