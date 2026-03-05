@@ -1,21 +1,25 @@
-name: Deploy
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
@@ -28,10 +32,20 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
       - name: Deploy
-        run: bunx gh-pages -d dist
+        id: deployment
+        uses: actions/deploy-pages@v4
