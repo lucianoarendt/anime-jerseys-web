@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import type { Entry } from "../types"
 
 interface Props {
@@ -9,18 +10,21 @@ export default function Gallery({ entries, baseUrl }: Props) {
   return (
     <div className="gallery">
       {entries.map((entry) => (
-        <div className="card" key={entry.id}>
+        <Link
+          to={`/anime-jerseys-web/${entry.id}`}
+          key={entry.id}
+          className="card"
+        >
           <img
             src={`${baseUrl}/${entry.image}`}
             alt={entry.character}
             loading="lazy"
           />
+
           <h3>{entry.character}</h3>
           <p>{entry.anime}</p>
-          <p>
-            {entry.team}
-          </p>
-        </div>
+          <p>{entry.team}</p>
+        </Link>
       ))}
     </div>
   )
