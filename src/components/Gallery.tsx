@@ -18,7 +18,7 @@ export default function Gallery({ entries, baseUrl }: Props) {
           <h3>{entry.character}</h3>
           <p>{entry.anime}</p>
           <p>
-            {entry.team} ({entry.year})
+            {entry.team}
           </p>
         </div>
       ))}
