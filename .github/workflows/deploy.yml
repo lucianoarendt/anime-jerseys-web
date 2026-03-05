@@ -26,7 +26,12 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Deploy to gh-pages
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Deploy
         run: bun run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
