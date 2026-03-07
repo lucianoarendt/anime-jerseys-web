@@ -11,7 +11,7 @@ export default function Gallery({ entries, baseUrl }: Props) {
     <div className="gallery">
       {entries.map((entry) => (
         <Link
-          to={`/anime-jerseys-web/${entry.id}`}
+          to={`search?id=${entry.id}`}
           key={entry.id}
           className="card"
         >

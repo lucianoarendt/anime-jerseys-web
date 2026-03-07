@@ -1,11 +1,12 @@
-import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { DATA_BASE_URL } from "../config"
 import type { Entry, IndexResponse } from "../types"
 
-export default function ImagePage() {
-  const { id } = useParams()
+type ImagePageProps = {
+  id: string
+}
 
+export default function ImagePage({ id }: ImagePageProps) {
   const [entry, setEntry] = useState<Entry | null>(null)
 
   useEffect(() => {
